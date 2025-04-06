@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Trash2 } from "lucide-react";
+
+import UserTable from "./components/UserTable";
 
 interface User {
   first_name: string;
@@ -48,43 +49,9 @@ function App() {
         <div className="flex flex-col items-center justify-center text-left">
           <h1 className="text-left">Users</h1>
         </div>
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto border-separate border-spacing-y-4 border-spacing-x-8">
-            <thead className="text-left text-gray-400">
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Avatar</th>
-                <th>Email Address</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, idx) => (
-                <tr key={idx} className="border-b border-gray-700">
-                  <td>{user.first_name}</td>
-                  <td>{user.last_name}</td>
-                  <td>
-                    <a
-                      href={user.avatar}
-                      className="text-blue-400 hover:underline"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {user.avatar}
-                    </a>
-                  </td>
-                  <td>{user.email}</td>
-                  <td>
-                    <button className="text-red-400 hover:text-red-600">
-                      <Trash2 size={18} />
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {/* <div className="overflow-x-auto"> */}
+        <UserTable users={users} />
+        {/* </div> */}
       </div>
     </>
   );
