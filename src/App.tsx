@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import UserTable from "./components/UserTable";
 import UserPagination from "./components/UserPagination";
@@ -25,10 +26,14 @@ interface ApiResponse {
 }
 
 function App() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const pageParam = parseInt(searchParams.get("page") || "1");
+  const currentPage = Math.max(pageParam, 1);
+
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  // const [currentPage, setCurrentPage] = useState(1); //using searchParams
   const [totalUsers, setTotalUsers] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
 
@@ -118,7 +123,7 @@ function App() {
   };
 
   const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
+    setSearchParams({ page: newPage.toString() });
     setLoading(true);
   };
 
