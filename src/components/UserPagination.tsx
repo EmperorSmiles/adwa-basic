@@ -36,6 +36,11 @@ const UserPagination = ({
             <PaginationLink
               isActive={currentPage === page}
               onClick={() => onPageChange(page)}
+              className={`cursor-pointer px-3 py-1 rounded ${
+                currentPage === page
+                  ? "bg-blue-600 text-white font-semibold"
+                  : "bg-gray-800 text-gray-200 hover:bg-gray-700 hover:text-white"
+              }`}
             >
               {page}
             </PaginationLink>
