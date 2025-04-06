@@ -152,7 +152,7 @@ function App() {
       ) : (
         <>
           <p className="text-sm text-gray-400">
-            Showing page {currentPage} of {totalPages} ({totalUsers} users)
+            Showing Page {currentPage} of {totalPages} ({totalUsers} users)
           </p>
           <div className="w-full max-w-4xl overflow-x-auto">
             <UserTable
